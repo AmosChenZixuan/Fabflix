@@ -1,0 +1,7 @@
+create table employees (
+email varchar(50) primary key,
+password varchar(128) not null,
+fullname varchar(100)
+);
+
+insert into employees value('classta@email.edu', '0deScBDpheB5w0KAA7OjFrFTn19m98QjsLaUPI1+xMl2PMl/QRZWuNuoK7G/wkVf', 'TA CS122B');

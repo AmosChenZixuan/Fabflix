@@ -1,0 +1,23 @@
+# delete auto-generated ID
+sudo \rm -rf /var/lib/mysql/auto.cnf
+
+# master
+1. Edit the /etc/mysql/mysql.conf.d/mysqld.cnf file and set the bind-address to 0.0.0.0. 
+Also, uncomment the lines of server-id and log_bin properties.
+2. sudo service mysql restart
+3. mysql -u root -p
+   create user 'repl'@'%' identified by 'slavepassword';
+   grant replication slave on *.* to 'repl'@'%' ;
+4. show master status;
+Keep the values of the File and Position columns, as they are needed in the next step. 
+For example, these values are mysql-bin.000001 and 337.
+
+# Slave
+1. Edit the /etc/mysql/mysql.conf.d/mysqld.cnf file and set the bind-address to 0.0.0.0. 
+Also, uncomment the server-id property and use value 2. Do not uncomment the log_bin property.
+2. sudo service mysql restart
+3. mysql -u root -p
+CHANGE MASTER TO MASTER_HOST='(master-private-ip)?', MASTER_USER='repl', MASTER_PASSWORD='slavepassword', MASTER_LOG_FILE='mysql-bin.000001', MASTER_LOG_POS=?;
+4. start slave;
+   show slave status;
+It should show "Slave_IO_State: Waiting for master to send event".

@@ -1,0 +1,16 @@
+# root login
+mysql -u root -p
+
+# enable logging
+mysql> SET GLOBAL general_log = 'ON';
+
+# get log file path
+mysql -u root -p -se "SHOW VARIABLES" | grep -e log_error -e general_log -e slow_query_log
+
+# show log
+sudo tail -f [path] (e.g /usr/local/mysql/data/dhcp-v044-069.log)
+
+# Windows show log
+cygwin
+cd ¡°C:\ProgramData\MySQL\MySQL Server 8.0\Data¡±
+tail -f LAPTOP-H15D5JR1.log
