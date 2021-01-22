@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="style.css" type="text/css"  rel="stylesheet">
+
+    <title>Single Star</title>
+    <link rel="icon" href="image/icon.png">
+</head>
+<nav class="navbar navbar-dark fixed-top bg-dark">
+    <div>
+        <a class="navbar-brand" href="main-page.html">Home</a>
+    </div>
+    <div class="form-inline" >
+        <p id = "userInfo" class ="m-2" style="color: lightgrey"> hi </p>
+        <form onsubmit="submitLogout(event)">
+            <button class ="btn btn-outline-info" type="submit" id="logout_btt">Logout</button>
+        </form>
+        <form method="get" action="shopping-cart.html">
+            <button class ="btn btn-outline-info" type="submit" id="shopcart_btt">Check Out
+                <span id="total_item_num" class="badge badge-secondary badge-pill"></span>
+            </button>
+        </form>
+    </div>
+</nav>
+<div style="margin-bottom:15em"></div>
+<body>
+    <div rel="single_star_tag" class="container">
+        <div class="row">
+            <div class="col mt-2">
+                <div id="star_name"></div>
+                <div id="star_birth_year"></div>
+                <div id="star_movie"></div>
+            </div>
+        </div>
+        <!--<div class="row">
+            <div class="col-10 mt-2 table_body align-items-center" id=movie_table_body></div>
+        </div>-->
+    </div>
+
+    <p id="errorMessage"></p>
+    <div style="margin-bottom:200px"></div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="single-star.js"></script>
+
+</body>
+</html>

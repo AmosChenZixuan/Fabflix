@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<nav class="navbar navbar-dark fixed-top bg-dark">
+    <div>
+        <a class="navbar-brand" href="main-page.html">Home</a>
+    </div>
+    <div class="form-inline" >
+        <p id = "userInfo" class ="m-2" style="color: lightgrey"> hi </p>
+        <form onsubmit="submitLogout(event)">
+            <button class ="btn btn-outline-info" type="submit" id="logout_btt">Logout</button>
+        </form>
+    </div>
+</nav>
+<div style="margin-bottom:15em"></div>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span id="total_item_num" class="badge badge-secondary badge-pill">3</span>
+            </h4>
+            <ul id="shopping_cart_list" class="list-group mb-3">
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Product name</h6>
+                    </div>
+                    <span class="text-muted">$12</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Second product</h6>
+                    </div>
+                    <span class="text-muted">$8</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between lh-condensed"><div>
+                    <h6 class="my-0">Third item * 2</h6>
+                    </div>
+                    <span class="text-muted">$5</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (USD)</span>
+                    <strong>$20</strong>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-8 order-md-1">
+            <form id="place_order_form" onsubmit="handlePlaceOrder(event, this.id)" class="needs-validation">
+                <h4 class="mb-3">Payment</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="inputFname">First Name</label>
+                        <input type="text"  name="firstName" class="form-control" id="inputFname" placeholder="First Name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="inputLname">Last Name</label>
+                        <input type="text" name="lastName" class="form-control" id="inputLname" placeholder="Last Name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="inputCardNum">Credit card number</label>
+                        <input type="text" name="cardNum" class="form-control" id="inputCardNum" placeholder="**** **** **** ****" required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="inputExpDate">Expiration</label>
+                        <input type="date" name="expDate" id="inputExpDate" value="2005-11-14" required/>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button id="payment_btt" class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+            </form>
+        </div>
+    </div>
+<!--    <footer class="my-5 pt-5 text-muted text-center text-small">-->
+<!--        <p class="mb-1">&copy; 2017-2019 Company Name</p>-->
+<!--        <ul class="list-inline">-->
+<!--            <li class="list-inline-item"><a href="#">Privacy</a></li>-->
+<!--            <li class="list-inline-item"><a href="#">Terms</a></li>-->
+<!--            <li class="list-inline-item"><a href="#">Support</a></li>-->
+<!--        </ul>-->
+<!--    </footer>-->
+</div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="logout.js"></script>
+</html>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FabflixMobile</string>
+    <string name="textview">TextView</string>
+    <color name="red">#CC0000</color>
+</resources>

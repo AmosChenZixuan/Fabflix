@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Fabflix</title>
+    <link rel="icon" href="image/icon.png">
+</head>
+
+<nav class="navbar navbar-dark fixed-top bg-dark">
+    <div>
+        <a class="navbar-brand" href="#">Home</a>
+        <a class="navbar-brand" data-toggle="modal" data-target="#exampleModal" href="#">Browse</a>
+        <a class="navbar-brand" data-toggle="modal" data-target="#complete-search" href="#">Search</a>
+    </div>
+    <div class="form-inline" >
+        <p id = "userInfo" class ="m-2" style="color: lightgrey"> hi </p>
+        <form onsubmit="submitLogout(event)">
+            <button class ="btn btn-outline-info" type="submit" id="logout_btt">Logout</button>
+        </form>
+        <form method="get" action="shopping-cart.html">
+            <button id="check_out_btn" class ="btn btn-outline-info" type="submit" id="shopcart_btt">Check Out
+                <span id="total_item_num" class="badge badge-secondary badge-pill"></span>
+            </button>
+        </form>
+    </div>
+</nav>
+
+<div style="margin-bottom:50px"></div>
+
+<div class="clearfix"></div>
+<body id="main_body">
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome to Fabflix</h1>
+        <!--            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>-->
+    </div>
+</div>
+<div id ="search_form">
+    <form id= "main_form" class="form-horizontal text-center m-0" METHOD="GET">
+        <div class="row">
+            <div class="col-3"></div>
+            <input  id="mo_t" name="title" class="form-control mr-sm-2  col-1" type="text" placeholder="title" aria-label="Search">
+            <input  id="mo_y" name="year" class="form-control mr-sm-2  col-1" type="number" placeholder="year" aria-label="Search">
+            <input  id="mo_d" name="director" class="form-control mr-sm-2  col-1" type="text" placeholder="director" aria-label="Search">
+            <input  id="mo_s" name="star" class="form-control mr-sm-2  col-1" type="text" placeholder="star's name" aria-label="Search">
+            <button id="search_btt" class="btn btn-outline-success my-2 my-sm-0  col-1" type="submit" onClick="click_search()">
+                <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div class="col-3"></div>
+        </div>
+    </form>
+    <div class="row mt-2" >
+        <div class="col-3"></div>
+        <div class="form-group form-inline col-3">
+            <select class="form-control mr-sm-2 w-50" id="sort_form" >
+                <option value="1">Rate des, Title des</option>
+                <option value="2">Rate asc, Title des</option>
+                <option value="3">Rate des, Title asc</option>
+                <option value="4">Rate asc, Title asc</option>
+                <option value="5">Title asc, Rate asc</option>
+                <option value="6">Title asc, Rate des</option>
+                <option value="7">Title des, Rate asc</option>
+                <option value="8">Title des, Rate des</option>
+            </select>
+            <button onclick="sortBy()" class="btn btn-outline-success">Sort</button>
+        </div>
+        <div class="col-1"></div>
+        <div class="col-3"style="text-align: start">
+            Prev<button class="btn btt_pre_page mb-2" onClick='click_pre()'>
+            <svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 010-1.506l5.48-4.796A1 1 0 0111 3.204v9.592a1 1 0 01-1.659.753z" clip-rule="evenodd"/>
+            </svg>
+        </button>
+            <span id="page_number"></span>
+            <button class="btn btt_next_page mb-2" onclick="click_nxt()">
+                <svg class="bi bi-caret-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 000-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 001.659.753z" clip-rule="evenodd"/>
+                </svg>
+            </button>Next
+        </div>
+        <!--            <div class="col-1" id="page_number" >page</div>-->
+    </div>
+</div>
+
+<div id=movie_table_body class="container my_style" >
+</div>
+
+<div class="form-inline">
+    <div class="slider_container">
+        <input type="range" min="1" max="100" value="10" class="slider mt-3" id="myRange">
+        <button id="set-slider-btn" class="btn mb-3 btn-sm btn-outline-success" onclick="set_movie_num()"></button>
+        <!--            <div id="demo"></div>-->
+        <div id="current_movie_num"></div>
+    </div>
+
+</div>
+<!--model-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose a genre or letter to browse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5>Browse by genre</h5>
+                <div id="browse_genre_body">
+                </div>
+                <hr>
+                <h5>Browse by title</h5>
+                <div id="brose_title_body">
+                    <button id="letter_id_" onclick="browse_search('letter_id_')" value="*" class="btn btn-secondary">*</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade " id="complete-search">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-body autocomplete-searchbox">
+                <form id="fulltext-search-form" onsubmit="submitFulltextSearch(event)" class="form-inline justify-content-center">
+                    <input id="fulltext-bar" name="query" class="autocomplete-searchbox form-control mr-sm-2 w-50" type="text" placeholder="Search by movie title">
+                    <button id="fulltext_btt" class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="margin-bottom:200px"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="main-page.js"></script>
+<script src="slider.js"></script>
+<script src="logout.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.devbridge-autocomplete/1.4.7/jquery.autocomplete.min.js"></script>
+<script src="autocomplete.js"></script>
+</body>
+
+

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <title>Login</title>
+    <!-- Custom styles for this template -->
+    <link href="home_style.css" rel="stylesheet">
+    <link rel="icon" href="image/icon.png">
+
+</head>
+<body class = "text-center home_bod login_body">
+
+    <form id="login_form" class="form-signin" method="post">
+
+        <img id="logo" class="mb-3 align-self-center" src="image/logo.gif" alt="" width="304em" height="100em">
+
+        <h1 class="h3 mb-3 font-weight-normal"style="color: lightgrey">Please sign in</h1>
+        <div id="login_error_message" style="color: red"></div>
+
+<!--        <h2 class="h4" style="font-size: small">(n@email.com)(still@stillen.com)</h2>-->
+<!--        <h3 class="h4" style="font-size: small">(n2)(123123)</h3>-->
+        <input name="type" type="hidden" value="customer">
+
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input  name="username" TYPE="email" id="inputEmail" class="form-control form-input" placeholder="Email address" required autofocus>
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input name="password" TYPE="PASSWORD" id="inputPassword" class="form-control form-input mb-1" placeholder="Password" required>
+        <div class="g-recaptcha" data-sitekey="6Leru-8UAAAAADry1pVU6-33V1mMH2avkfuDWhvn"></div>
+        <button class="btn btn-lg btn-primary btn-block mt-2" type="submit" id = "login_btt">Sign in</button>
+        <p class="mt-5 mb-3 text-muted" id="copyright" style="color:honeydew"><a href="admin-login.html">&copy;</a> 2020-2021</p>
+    </form>
+<!--    <div class="clearfix"></div>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
+</body>
+</html>

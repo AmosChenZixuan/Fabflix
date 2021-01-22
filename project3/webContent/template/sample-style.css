@@ -1,0 +1,51 @@
+
+*{
+
+    margin: 0;
+}
+.home_bod {
+    text-align: center;
+}
+#search_form{
+    margin-top: 0px;
+}
+
+#search_content{
+    width: 50em;
+    padding: 10px 5px;
+}
+#search_btt {
+    margin: 20px 10px;
+    padding: 10px 15px;
+}
+
+#logout {
+    position: absolute;
+    width: 25px;
+    height: 20px;
+    margin: 35px;
+    float:left;
+}
+
+[rel = "movie_tag"] {
+    margin: 10px auto 0px auto;
+    border: 2px solid ;
+
+    background-color: gold;
+    height: 250px;
+    width: 800px;
+    font-size: larger;
+    display:flex;
+    flex-direction: column;
+}
+.buy_class{
+    width: 50px;
+    height: 50px;
+    justify-content: end;
+    border-radius: 2em;
+    margin: 10px 20px 0 20px;
+    padding: 5px;
+}
+#movie_table{
+    text-align: center;
+}

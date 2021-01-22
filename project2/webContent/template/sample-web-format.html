@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" data-toggle="modal" data-target="#exampleModal">Browse</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <form method="get" action="api/logout">
+        <button class ="btn btn-outline-info" type="submit" id="logout_btt">Logout</button>
+    </form>
+    <form method="get" action="shopping-cart.html">
+        <button class ="btn btn-outline-info" type="submit" id="shopcart_btt">Check Out</button>
+    </form>
+</nav>
+<div style="margin-bottom:100px"></div>
+
+<div class="clearfix"></div>
+<body>
+<p id = "userInfo"> </p>
+
+<div class="jumbotron text-center">
+    <div class="container">
+        <h1>Welcome To My Website</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor</p>
+    </div>
+</div>
+<div id ="search_form">
+    <form id= "main_form" class="form-horizontal text-center m-0" METHOD="GET">
+        <div class="row">
+            <div class="col-3"></div>
+            <input  id="mo_t" name="title" class="form-control mr-sm-2  col-1" type="text" placeholder="title" aria-label="Search">
+            <input  id="mo_y" name="year" class="form-control mr-sm-2  col-1" type="number" placeholder="year" aria-label="Search">
+            <input  id="mo_d" name="director" class="form-control mr-sm-2  col-1" type="text" placeholder="director" aria-label="Search">
+            <input  id="mo_s" name="star" class="form-control mr-sm-2  col-1" type="text" placeholder="star's name" aria-label="Search">
+            <button id="search_btt" class="btn btn-outline-success my-2 my-sm-0  col-1" type="submit" onClick='click_empty_html()'>
+                <svg class="bi bi-search" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 011.415 0l3.85 3.85a1 1 0 01-1.414 1.415l-3.85-3.85a1 1 0 010-1.415z" clip-rule="evenodd"/>
+                    <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 100-11 5.5 5.5 0 000 11zM13 6.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <div class="col-3"></div>
+        </div>
+    </form>
+
+    <div class="row mt-2">
+
+        <div class="col-3"></div>
+        <div class="form-group form-inline col-3">
+            <select class="form-control mr-sm-2 w-50" id="sort_form" >
+                <option value="1">Rate dec, Title dec</option>
+                <option value="2">Rate asc, Title dec</option>
+                <option value="3">Title dec, Rate dec</option>
+                <option value="4">Title asc, Rate dec</option>
+            </select>
+            <button onclick="sortBy()" class="btn btn-outline-success">Sort</button>
+        </div>
+        <div class="col-2">
+            <button class="btn btt_pre_page" onClick='click_pre()'>
+                <svg class="bi bi-caret-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 12.796L4.519 8 10 3.204v9.592zm-.659.753l-5.48-4.796a1 1 0 010-1.506l5.48-4.796A1 1 0 0111 3.204v9.592a1 1 0 01-1.659.753z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <button class="btn btt_next_page" onclick="click_nxt()">
+                <svg class="bi bi-caret-right" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M6 12.796L11.481 8 6 3.204v9.592zm.659.753l5.48-4.796a1 1 0 000-1.506L6.66 2.451C6.011 1.885 5 2.345 5 3.204v9.592a1 1 0 001.659.753z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+        </div>
+        <div class="col-1" id="page_number" >page</div>
+    </div>
+</div>
+
+    <div id=movie_table_body class="container my_style" >
+        <!--        <div rel ="movie_tag"  class="container">-->
+        <!--            <div class="row my_row pic_row">-->
+        <!--                <div class="col-4 my_col align-item-start" style="background: url('image/placeholder_pic.jpg')">-->
+        <!--                </div>-->
+        <!--                <div class = "col-4 movie_title my_col ">-->
+        <!--                    <a href = 'single-movie.html?id=tt0395642'>Loma Lynda: Episode II</a>-->
+        <!--                    <div class="mt-2 movie_director">Director:</div>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="row my_row ">-->
+        <!--                <div class = "col-1 my_col movie_year ">2004</div>-->
+        <!--                <div class = "col-1 movie_rating my_col">9.7</div>-->
+        <!--                <div class = "col-2 my_col movie_genres">Drama</div>-->
+        <!--                <div class = "col-4 my_col">-->
+        <!--                    <a href = 'single-star.html?id=nm1534558'>Chris Mammone</a>-->
+        <!--                    <br>-->
+        <!--                    <a href = 'single-star.html?id=nm1533402'>Daniel DeBlanke</a>-->
+        <!--                    <br>-->
+        <!--                    <a href = 'single-star.html?id=nm1531164'>Jason Bognacki</a>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--            <div class="row my_row">-->
+        <!--                <div class = "col my_col mt-1">-->
+        <!--                    <form id='form-0' onsubmit="submitForm(this.id, 'Loma Lynda: Episode II')"><input type='hidden' name='action' value='add'><input type='hidden' name='movie_id' value='tt0395642' /><input type='hidden' name='movie_title' value='Loma Lynda: Episode II' /><button class='buy_class'>Add to Cart</button></form>-->
+        <!--                </div>-->
+        <!--            </div>-->
+        <!--        </div>-->
+        <div rel ="movie_tag"  class="container">
+            <div class="row my_row pic_row">
+                <div class="col-4 my_col align-item-start" style="background: url('../image/placeholder_pic.jpg')">
+                </div>
+                <div class = "col-4 movie_title my_col ">
+                    <a href = 'single-movie.html?id=tt0395642'>Loma Lynda: Episode II</a>
+                    <div class="mt-2">Director:</div>
+                </div>
+            </div>
+            <div class="row my_row ">
+                <div class = "col-1 my_col movie_year ">2004</div>
+                <div class = "col-1 movie_rating my_col">9.7</div>
+                <div class = "col-2 my_col movie_genres">Drama</div>
+                <div class = "col-4 my_col">
+                    <a href = 'single-star.html?id=nm1534558'>Chris Mammone</a>
+                    <br>
+                    <a href = 'single-star.html?id=nm1533402'>Daniel DeBlanke</a>
+                    <br>
+                    <a href = 'single-star.html?id=nm1531164'>Jason Bognacki</a>
+                </div>
+            </div>
+            <div class="row my_row">
+                <div class = "col my_col mt-1">
+                    <form id='form-0' onsubmit="submitForm(this.id, 'Loma Lynda: Episode II')"><input type='hidden' name='action' value='add'><input type='hidden' name='movie_id' value='tt0395642' /><input type='hidden' name='movie_title' value='Loma Lynda: Episode II' /><button class='buy_class'>Add to Cart</button></form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--model-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Choose a genre or letter to browse</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5>Browse by genre</h5>
+                    <div id="browse_genre_body">
+                        <a href="#" value= "Gnere1" class="btn btn-secondary">Genre1</a>
+                        <a href="#" value= "Gnere2" class="btn btn-secondary">Genre2</a>
+                        <a href="#" value= "Gnere3" class="btn btn-secondary">Genre3</a>
+                    </div>
+
+<!--                    <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">button</a> triggers a popover on click.</p>-->
+                    <hr>
+                    <h5>Browse by title</h5>
+                    <div id="brose_title_body">
+                        <a href="#" class="tooltip-test" title="Tooltip">A</a>
+                        <a href="#" class="tooltip-test" title="Tooltip">B</a>
+                        <a href="#" class="tooltip-test" title="Tooltip">C</a>
+                        <a href="#" class="tooltip-test" title="Tooltip">D</a>
+                        <a href="http://www.google.com">Google</a>
+                        <!--                        <p><a href="#" class="tooltip-test" title="Tooltip">This link</a> and <a href="#" class="tooltip-test" title="Tooltip">that link</a> have tooltips on hover.</p>-->
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+
+<div style="margin-top:400px"></div>
+<div class="slidecontainer">
+    <input type="range" min="1" max="100" value="50" class="slider" id="myRange" placeholder="number of movies per page">
+    <div id="demo"></div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="sample.js"></script>
+</body>
+
+
+</html>

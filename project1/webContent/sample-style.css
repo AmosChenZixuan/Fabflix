@@ -1,0 +1,40 @@
+
+*{
+
+    margin: 0;
+}
+.home_bod {
+    text-align: center;
+}
+#search_form{
+    margin-top: 0px;
+}
+
+#search_content{
+    width: 50em;
+    padding: 10px 5px;
+}
+#search_btt {
+    margin: 20px 10px;
+    padding: 10px 15px;
+}
+
+#logout {
+    margin: 10px;
+    height: 20px;
+    display: flex;
+    justify-content: flex-end;
+    margin: 30px;
+}
+
+[rel = "movie_tag"] {
+    margin: 10px auto 0px auto;
+    border: 2px solid ;
+    background-color: gold;
+    height: 250px;
+    width: 800px;
+    font-size: larger
+}
+#movie_table_body{
+    text-align: center;
+}

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:background="@drawable/common_google_signin_btn_icon_dark_normal_background"
+              android:layout_marginTop="80dp">
+
+
+    <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+
+                    android:text="Title"
+                    android:layout_width="225dp"
+                    android:layout_height="wrap_content" android:id="@+id/Title" android:textSize="12sp"
+                    android:textStyle="bold"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:orientation="vertical">
+            <TextView
+
+                    android:text="Year"
+                    android:layout_width="221dp"
+                    android:layout_height="wrap_content" android:id="@+id/year" android:textSize="10sp"/>
+            <TextView
+                    android:text="Stars"
+                    android:layout_width="203dp"
+                    android:layout_height="wrap_content" android:id="@+id/stars" android:textSize="10sp"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <TextView
+                    android:text="Director"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/director" android:textSize="10sp"/>
+            <TextView
+                    android:text="Gneres"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/genres" android:textSize="10sp"/>
+        </TableRow>
+        <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <TextView
+                    android:text="Rating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/rating" android:textSize="10sp"
+            />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

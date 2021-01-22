@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="icon" href="image/icon.png">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+
+
+<nav class="navbar navbar-dark fixed-top bg-dark">
+    <div class="form-inline">
+        <a class="navbar-brand" href="main-page.html">Home</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Movie Schema
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <button class="dropdown-item" data-toggle="modal" data-target="#creditcardModal" href="#">creditcards</button>
+                <button class="dropdown-item">customers</button>
+                <button class="dropdown-item">employees</button>
+            </div>
+        </div>
+    </div>
+    <div class="form-inline" >
+        <p id = "userInfo" class ="m-2" style="color: lightgrey"> hi </p>
+        <form onsubmit="submitLogout(event)">
+            <button class ="btn btn-outline-info" type="submit" id="logout_btt">Logout</button>
+        </form>
+    </div>
+
+</nav>
+<div style="margin-bottom:15em"></div>
+<div class='modal fade' id='genres_in_moviesModal' role='dialog'>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">genres_in_moviesSchema</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button></div><div class="modal-body m-2">
+            <div id='genres_in_movies'><div class="container">
+                <div class="row"> <div class="col-2">genreId</div>
+                    <div class="col-3">int</div>
+                    <div class="col-2">MUL</div>
+                    <div class="col-2">MUL</div>
+                </div><div class="row">
+                    <div class="col-2">movieId</div>
+                    <div class="col-3">varchar(10)</div>
+                    <div class="col-2">MUL</div>
+                    <div class="col-2">MUL</div>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+</div>
+<div class="modal fade" id="creditcardModal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">creditcard Schema</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body m-2">
+                <div id = "creditcard">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-2">id</div>
+                            <div class="col-3">varchar(20)</div>
+                            <div class="col-2">PRI</div>
+                            <div class="col-2">PRI</div>
+                        </div><div class="row"> <div class="col-2">firstName</div>
+                        <div class="col-3">varchar(50)</div>
+                    </div><div class="row">
+                        <div class="col-2">lastName</div>
+                        <div class="col-3">varchar(50)</div>
+                    </div><div class="row">
+                        <div class="col-2">expiration</div>
+                        <div class="col-3">date</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<body id="dashboard-content">
+<!-- Example single danger button -->
+
+    <div class="container" id="dashboard_form">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <ul id="dbTree">
+                    <li><span class="caret">Moviedb</span>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4"></div>
+        </div>
+            <div id="message-box" style="width:40%">
+                <b id="message"></b>
+            </div>
+            <form id="dashboard-main-form" onsubmit="submitMainForm(event)">
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 m-1"> Title
+                        <input type="text"  class="form-control" id="movie_title" name="movie_title" placeholder="Movie Title">
+                    </div>
+                    <div class="col-3 m-1"> Year
+                        <input type="text" class="form-control" id="movie_year" name="movie_year" placeholder="Release Year">
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 m-1"> Director
+                        <input type="text"  class="form-control" id="movie_director" name="movie_director" placeholder="Director">
+                    </div>
+                    <div class="col-3 m-1">Genre
+                        <input type="text" class="form-control" id="genre" name="genre" placeholder="Movie Genre">
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-3"></div>
+                    <div class="col-3 m-1"> Star
+                        <input type="text" class="form-control" id="star_name" name="star_name" placeholder="Star Name">
+                    </div>
+                    <div class="col-3 m-1"> Birth Year
+                        <input type="text" class="form-control" id="star_birth" name="star_birth" placeholder="Star Birth Year (Optional)">
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-4"></div>
+                    <div class="col-2 mt-2 mr-0">Add Movie
+                        <input type="radio"  id="add_movie" name="action" value = 0 checked>
+                    </div>
+                    <div class="col-3 ml-0 pl-0 pt-2">Add New Star
+                        <input type="radio"  id="add_star" name="action" value = 1>
+                    </div>
+                    <div class="col-3"></div>
+                </div>
+                <div class="row">
+                    <div class="col-5"></div>
+                    <input class="col-2 m-1 btn btn-success" value="Submit" type="submit">
+                    <div class="col-5"></div>
+                </div>
+            </form>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="logout.js"></script>
+</body>
+</html>

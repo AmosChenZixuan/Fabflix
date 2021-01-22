@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="sample-style.css">
+
+</head>
+<div id="logout">
+    <button id = "logout_btt">Logout</button>
+</div>
+
+<body class = "home_bod">
+<h1>Zilizili</h1>
+
+<form id="search_form" method="post" action ="index.html">
+    <div>
+        <input id= "search_content" type="text" name = "search">
+        <button id = "search_btt">Search</button>
+        <div class="form-group col-sm-4">
+            <select class="form-control" name="search-criteria" id="search-criteria">
+                <option value="by-title">By Title</option>
+                <option value="by-genre">By Genre</option>
+            </select>
+        </div>
+    </div>
+</form>
+
+<div id=movie_table_body>
+    <div rel="movie_tag">
+        <th class = movie_title>Title1</th>
+        <th class = movie_year>Year1</th>
+        <th class = movie_director>Director1</th>
+        <th class = movie_genres>Genres1</th>
+        <th class = movie_stars>Stars1</th>
+        <th class = movie_rating>Rating1</th>
+    </div>
+
+    <div rel = "movie_tag">
+        <th class = movie_title>Title2</th>
+        <th class = movie_year>Year2</th>
+        <th class = movie_director>Director2</th>
+        <th class = movie_genres>Genres2</th>
+        <th class = movie_stars>Stars2</th>
+        <th class = movie_rating>Rating2</th>
+    </div>
+</div>
+
+</body>
+<div style="margin-top:400px"></div>
+
+</body>
+</html>
